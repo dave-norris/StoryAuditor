@@ -1,9 +1,8 @@
 import { DatabaseStatus } from './components/DatabaseStatus';
-import { initializeDatabase } from '@/lib/db';
 
 export default async function Home() {
-  // Initialize database on page load
-  await initializeDatabase();
+  // Log DATABASE_URL for debugging
+  console.log('DATABASE_URL:', process.env.DATABASE_URL);
 
   return (
     <div className="container">
@@ -17,3 +16,4 @@ export default async function Home() {
     </div>
   );
 }
+
