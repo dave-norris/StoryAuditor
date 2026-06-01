@@ -1,11 +1,35 @@
-{"timestamp":"00:00:01.342","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  We detected TypeScript in your project and reconfigured your tsconfig.json file for you."}
-{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:\n"}
-{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  \t- target was set to ES2017 (For top-level `await`. Note: Next.js only polyfills for the esmodules target.)"}
-{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  \t- allowJs was set to true"}
-{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  \t- incremental was set to true"}
-{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  \t- include was updated to add '.next/types/**/*.ts'"}
-{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  \t- include was updated to add '.next/dev/types/**/*.ts'"}
-{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  \t- plugins was updated to add { name: 'next' }"}
-{"timestamp":"00:00:01.344","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:01.546","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:01.623","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:05.880","source":"Server","level":"ERROR","message":"[2026-06-01T02:43:34.770Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:00:05.993","source":"Server","level":"ERROR","message":"Failed to initialize database: PrismaClientKnownRequestError: \nInvalid `prisma.$queryRaw()` invocation:\n\n\n"}
+{"timestamp":"00:00:06.104","source":"Server","level":"ERROR","message":"[2026-06-01T02:43:34.996Z] [ERROR] [HealthCheckService] [health_check] Health check failed {}"}
+{"timestamp":"00:00:17.210","source":"Server","level":"ERROR","message":"[2026-06-01T02:43:46.102Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:00:17.301","source":"Server","level":"ERROR","message":"Failed to initialize database: PrismaClientKnownRequestError: \nInvalid `prisma.$queryRaw()` invocation:\n\n\n"}
+{"timestamp":"00:00:17.312","source":"Server","level":"ERROR","message":"[2026-06-01T02:43:46.204Z] [ERROR] [HealthCheckService] [health_check] Health check failed {}"}
+{"timestamp":"00:00:17.601","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:20.798","source":"Server","level":"ERROR","message":"[2026-06-01T02:43:49.676Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:00:20.800","source":"Server","level":"WARN","message":"[2026-06-01T02:43:49.692Z] [WARN] [DatabaseConnectionManager] [initialization] Database initialization failed, but application will continue \"\""}
+{"timestamp":"00:00:20.829","source":"Server","level":"ERROR","message":"[2026-06-01T02:43:49.721Z] [ERROR] [HealthCheckService] [health_check] Health check failed {}"}
+{"timestamp":"00:00:27.567","source":"Server","level":"ERROR","message":"[2026-06-01T02:43:56.459Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:00:27.567","source":"Server","level":"WARN","message":"[2026-06-01T02:43:56.460Z] [WARN] [DatabaseConnectionManager] [initialization] Database initialization failed, but application will continue \"\""}
+{"timestamp":"00:00:27.579","source":"Server","level":"ERROR","message":"[2026-06-01T02:43:56.471Z] [ERROR] [HealthCheckService] [health_check] Health check failed {}"}
+{"timestamp":"00:02:53.532","source":"Server","level":"LOG","message":"  Reload env: .env"}
+{"timestamp":"00:02:53.767","source":"Server","level":"ERROR","message":"[2026-06-01T02:46:22.660Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:02:53.804","source":"Server","level":"WARN","message":"[2026-06-01T02:46:22.699Z] [WARN] [DatabaseConnectionManager] [initialization] Database initialization failed, but application will continue \"\""}
+{"timestamp":"00:03:00.481","source":"Server","level":"ERROR","message":"[2026-06-01T02:46:29.375Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:03:00.581","source":"Server","level":"WARN","message":"[2026-06-01T02:46:29.477Z] [WARN] [DatabaseConnectionManager] [initialization] Database initialization failed, but application will continue \"\""}
+{"timestamp":"00:03:00.622","source":"Server","level":"ERROR","message":"[2026-06-01T02:46:29.517Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:03:00.630","source":"Server","level":"WARN","message":"[2026-06-01T02:46:29.525Z] [WARN] [DatabaseConnectionManager] [initialization] Database initialization failed, but application will continue \"\""}
+{"timestamp":"00:03:00.721","source":"Server","level":"ERROR","message":"[2026-06-01T02:46:29.616Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:03:00.727","source":"Server","level":"WARN","message":"[2026-06-01T02:46:29.622Z] [WARN] [DatabaseConnectionManager] [initialization] Database initialization failed, but application will continue \"\""}
+{"timestamp":"00:03:00.779","source":"Server","level":"ERROR","message":"[2026-06-01T02:46:29.674Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:03:00.791","source":"Server","level":"WARN","message":"[2026-06-01T02:46:29.686Z] [WARN] [DatabaseConnectionManager] [initialization] Database initialization failed, but application will continue \"\""}
+{"timestamp":"00:03:00.841","source":"Server","level":"ERROR","message":"[2026-06-01T02:46:29.735Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:03:00.847","source":"Server","level":"WARN","message":"[2026-06-01T02:46:29.743Z] [WARN] [DatabaseConnectionManager] [initialization] Database initialization failed, but application will continue \"\""}
+{"timestamp":"00:03:08.494","source":"Server","level":"ERROR","message":"[2026-06-01T02:46:37.389Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:03:08.499","source":"Server","level":"WARN","message":"[2026-06-01T02:46:37.395Z] [WARN] [DatabaseConnectionManager] [initialization] Database initialization failed, but application will continue \"\""}
+{"timestamp":"00:03:20.138","source":"Server","level":"ERROR","message":"[2026-06-01T02:46:49.033Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:03:20.145","source":"Server","level":"WARN","message":"[2026-06-01T02:46:49.041Z] [WARN] [DatabaseConnectionManager] [initialization] Database initialization failed, but application will continue \"\""}
+{"timestamp":"00:03:37.697","source":"Server","level":"ERROR","message":"[2026-06-01T02:47:06.593Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:03:37.705","source":"Server","level":"WARN","message":"[2026-06-01T02:47:06.602Z] [WARN] [DatabaseConnectionManager] [initialization] Database initialization failed, but application will continue \"\""}
+{"timestamp":"00:03:50.052","source":"Server","level":"ERROR","message":"[2026-06-01T02:47:18.947Z] [ERROR] [DatabaseConnectionManager] [initialization] Failed to initialize database connection {}"}
+{"timestamp":"00:03:50.057","source":"Server","level":"WARN","message":"[2026-06-01T02:47:18.954Z] [WARN] [DatabaseConnectionManager] [initialization] Database initialization failed, but application will continue \"\""}
