@@ -122,7 +122,7 @@ export function DatabaseStatus() {
 
       setStatus(data.status === 'healthy' ? 'healthy' : 'unhealthy');
       setMessage(data.message);
-      setResponseTime(data.responseTime);
+      setResponseTime(data.responseTime || 0);
     } catch (error) {
       setStatus('unhealthy');
       setMessage(error instanceof Error ? error.message : 'Failed to connect');
