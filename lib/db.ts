@@ -1,10 +1,36 @@
 /**
  * Database utilities for health checks and status
+ * 
+ * Provides a singleton Prisma Client instance with proper connection management
  */
 
 import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
+// Singleton pattern to avoid multiple Prisma Client instances
+let prisma: PrismaClient;
+
+function getPrismaClient(): PrismaClient {
+  if (!prisma) {
+    prisma = new PrismaClient({
+      log: ['error'], // Only log errors in production
+    });
+
+    // Handle graceful shutdown
+    if (typeof window === 'undefined') {
+      process.on('SIGINT', async () => {
+        await prisma.$disconnect();
+        process.exit(0);
+      });
+
+      process.on('SIGTERM', async () => {
+        await prisma.$disconnect();
+        process.exit(0);
+      });
+    }
+  }
+
+  return prisma;
+}
 
 export interface HealthCheckResult {
   status: 'healthy' | 'unhealthy';
@@ -26,7 +52,8 @@ export interface DatabaseStatus {
  */
 export async function initializeDatabase(): Promise<void> {
   try {
-    await prisma.$queryRaw`SELECT 1`;
+    const client = getPrismaClient();
+    await client.$queryRaw`SELECT 1`;
   } catch (error) {
     // Silently fail - app continues without database
     console.error('Database initialization failed:', error);
@@ -41,7 +68,8 @@ export async function checkDatabaseHealth(): Promise<HealthCheckResult> {
   const timestamp = new Date().toISOString();
 
   try {
-    await prisma.$queryRaw`SELECT 1`;
+    const client = getPrismaClient();
+    await client.$queryRaw`SELECT 1`;
     const responseTime = Date.now() - startTime;
 
     return {
@@ -56,7 +84,7 @@ export async function checkDatabaseHealth(): Promise<HealthCheckResult> {
 
     return {
       status: 'unhealthy',
-      message: `Database connection failed: ${errorMessage}`,
+      message: `Connection failed: ${errorMessage}`,
       responseTime,
       timestamp,
     };
@@ -68,7 +96,8 @@ export async function checkDatabaseHealth(): Promise<HealthCheckResult> {
  */
 export async function getDatabaseStatus(): Promise<DatabaseStatus> {
   try {
-    await prisma.$queryRaw`SELECT 1`;
+    const client = getPrismaClient();
+    await client.$queryRaw`SELECT 1`;
 
     return {
       connected: true,
@@ -89,3 +118,13 @@ export async function getDatabaseStatus(): Promise<DatabaseStatus> {
     };
   }
 }
+
+/**
+ * Disconnect from database (for cleanup)
+ */
+export async function disconnectDatabase(): Promise<void> {
+  if (prisma) {
+    await prisma.$disconnect();
+  }
+}
+

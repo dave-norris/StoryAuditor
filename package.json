@@ -9,7 +9,6 @@
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:db": "ts-node scripts/test-db-connection.ts",
     "postinstall": "prisma generate"
   },
   "keywords": [],
@@ -29,7 +28,6 @@
     "@vitest/ui": "^4.1.7",
     "fast-check": "^4.8.0",
     "prisma": "^6.0.0",
-    "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "vitest": "^4.1.7"
   }
