@@ -22,6 +22,18 @@ export interface DatabaseStatus {
 }
 
 /**
+ * Initialize database connection
+ */
+export async function initializeDatabase(): Promise<void> {
+  try {
+    await prisma.$queryRaw`SELECT 1`;
+  } catch (error) {
+    // Silently fail - app continues without database
+    console.error('Database initialization failed:', error);
+  }
+}
+
+/**
  * Check database health by running a simple query
  */
 export async function checkDatabaseHealth(): Promise<HealthCheckResult> {
