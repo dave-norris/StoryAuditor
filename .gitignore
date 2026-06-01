@@ -42,9 +42,6 @@ Thumbs.db
 # Kiro development files
 .kiro/
 
-# Prisma generated client
-generated/
-
 # Temporary files
 *.tmp
 *.temp
