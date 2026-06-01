@@ -124,17 +124,15 @@ export class DatabaseConnectionManager {
         'Prisma Client initialized'
       );
 
-      // Test the connection
-      await this.prisma.$queryRaw`SELECT 1`;
-
-      // Update status
+      // Don't test the connection here - let the health check do it
+      // This prevents initialization failures if the database is temporarily unavailable
       this.status.connected = true;
       this.reconnectAttempts = 0;
 
       DatabaseLogger.info(
         'DatabaseConnectionManager',
         'initialization',
-        'Database connection established successfully',
+        'Database connection manager initialized successfully',
         { url: ConfigLoader.sanitizeForLogging(url) }
       );
     } catch (error) {
