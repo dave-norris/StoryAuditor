@@ -4,6 +4,10 @@
 .pnp.js
 pnpm-lock.yaml
 
+node_modules
+.next
+.env.local
+
 # Testing
 /coverage
 /.nyc_output
