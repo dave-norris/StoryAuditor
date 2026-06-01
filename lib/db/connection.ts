@@ -43,16 +43,17 @@ export class DatabaseConnectionManager {
     };
   }
 
-/**
- * Initialize the database connection
- * 
- * Loads the DATABASE_URL, validates it, and initializes the Prisma Client
- * with appropriate connection pool settings.
- * 
- * Note: If initialization fails, the application continues running without
- * database access. This allows the app to start even if the database is unavailable.
- */
-async initialize(): Promise<void> {
+  /**
+   * Initialize the database connection
+   * 
+   * Loads the DATABASE_URL, validates it, and initializes the Prisma Client
+   * with appropriate connection pool settings.
+   * 
+   * Note: If initialization fails, the application continues running without
+   * database access. This allows the app to start even if the database is unavailable.
+   * The app will retry on the next request.
+   */
+  async initialize(): Promise<void> {
     // Prevent multiple simultaneous initialization attempts
     if (this.isInitializing) {
       if (this.initializationPromise) {
@@ -70,7 +71,7 @@ async initialize(): Promise<void> {
       DatabaseLogger.warn(
         'DatabaseConnectionManager',
         'initialization',
-        'Database initialization failed, but application will continue',
+        'Database initialization failed, but application will continue. Will retry on next request.',
         error instanceof Error ? error : new Error(String(error))
       );
     } finally {
