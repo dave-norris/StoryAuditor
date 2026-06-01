@@ -6,7 +6,7 @@
  * and reconnection logic with exponential backoff.
  */
 
-import { PrismaClient } from '../../generated/prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { DatabaseConfig, ConnectionStatus } from './types';
 import { ConfigLoader } from './config';
 import { DatabaseErrorHandler } from './error-handler';
@@ -113,11 +113,9 @@ async initialize(): Promise<void> {
       this.config.url = url;
 
       // Initialize Prisma Client
-      // For standard PostgreSQL, we use the default client
-      // The DATABASE_URL is read from environment variables
-      const prismaConfig: any = {};
-
-      this.prisma = new PrismaClient(prismaConfig);
+      // For Prisma v7, the DATABASE_URL is read from environment variables automatically
+      // via the prisma.config.ts file
+      this.prisma = new PrismaClient({});
 
       DatabaseLogger.debug(
         'DatabaseConnectionManager',
