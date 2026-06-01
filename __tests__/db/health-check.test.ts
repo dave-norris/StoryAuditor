@@ -7,7 +7,7 @@
 
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { HealthCheckService } from '../../lib/db/health-check';
-import { PrismaClient } from '../../generated/prisma/client';
+import { PrismaClient } from '@prisma/client';
 
 describe('HealthCheckService', () => {
   let mockPrisma: any;

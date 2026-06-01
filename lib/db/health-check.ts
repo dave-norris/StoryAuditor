@@ -5,7 +5,7 @@
  * including timeout handling and response time measurement.
  */
 
-import { PrismaClient } from '../../generated/prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { HealthCheckResult } from './types';
 import { DatabaseErrorHandler } from './error-handler';
 import { DatabaseLogger } from './logger';
