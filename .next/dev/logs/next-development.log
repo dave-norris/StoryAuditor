@@ -1,0 +1,11 @@
+{"timestamp":"00:00:01.342","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  We detected TypeScript in your project and reconfigured your tsconfig.json file for you."}
+{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:\n"}
+{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  \t- target was set to ES2017 (For top-level `await`. Note: Next.js only polyfills for the esmodules target.)"}
+{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  \t- allowJs was set to true"}
+{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  \t- incremental was set to true"}
+{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  \t- include was updated to add '.next/types/**/*.ts'"}
+{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  \t- include was updated to add '.next/dev/types/**/*.ts'"}
+{"timestamp":"00:00:01.343","source":"Server","level":"LOG","message":"  \t- plugins was updated to add { name: 'next' }"}
+{"timestamp":"00:00:01.344","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:01.546","source":"Server","level":"LOG","message":""}
