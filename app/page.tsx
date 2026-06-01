@@ -1,10 +1,6 @@
 import { DatabaseStatus } from './components/DatabaseStatus';
-import { initializeDatabase } from '@/lib/db';
 
-export default async function Home() {
-  // Initialize database on page load
-  await initializeDatabase();
-
+export default function Home() {
   return (
     <div className="container">
       <h1>Welcome to StoryAuditor</h1>

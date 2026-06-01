@@ -1,20 +1,28 @@
+'use client';
+
 /**
  * Database Status Component
  * 
- * Server component that displays the current database connection status
- * on the main page.
+ * Client component that displays database connection status.
+ * Only connects when the "Connect DB" button is clicked.
  */
 
-import { checkDatabaseHealth, getDatabaseStatus } from '@/lib/db';
+import { useState } from 'react';
 
 interface StatusIndicatorProps {
-  status: 'healthy' | 'unhealthy' | 'timeout';
+  status: 'idle' | 'healthy' | 'unhealthy' | 'loading';
   message: string;
   responseTime: number;
 }
 
 function StatusIndicator({ status, message, responseTime }: StatusIndicatorProps) {
   const statusConfig = {
+    idle: {
+      color: '#6b7280',
+      bgColor: '#f3f4f6',
+      label: '○ Not Connected',
+      textColor: '#374151',
+    },
     healthy: {
       color: '#10b981',
       bgColor: '#ecfdf5',
@@ -27,10 +35,10 @@ function StatusIndicator({ status, message, responseTime }: StatusIndicatorProps
       label: '✗ Disconnected',
       textColor: '#991b1b',
     },
-    timeout: {
+    loading: {
       color: '#f59e0b',
       bgColor: '#fffbeb',
-      label: '⚠ Timeout',
+      label: '⟳ Connecting...',
       textColor: '#92400e',
     },
   };
@@ -98,25 +106,58 @@ function StatusIndicator({ status, message, responseTime }: StatusIndicatorProps
   );
 }
 
-export async function DatabaseStatus() {
-  try {
-    const healthResult = await checkDatabaseHealth();
-    const dbStatus = await getDatabaseStatus();
+export function DatabaseStatus() {
+  const [status, setStatus] = useState<'idle' | 'healthy' | 'unhealthy' | 'loading'>('idle');
+  const [message, setMessage] = useState('Click "Connect DB" to check database connection');
+  const [responseTime, setResponseTime] = useState(0);
 
-    return (
-      <StatusIndicator
-        status={healthResult.status}
-        message={healthResult.message}
-        responseTime={healthResult.responseTime}
-      />
-    );
-  } catch (error) {
-    return (
-      <StatusIndicator
-        status="unhealthy"
-        message="Unable to check database status"
-        responseTime={0}
-      />
-    );
-  }
+  const handleConnect = async () => {
+    setStatus('loading');
+    setMessage('Checking database connection...');
+    setResponseTime(0);
+
+    try {
+      const response = await fetch('/api/health');
+      const data = await response.json();
+
+      setStatus(data.status === 'healthy' ? 'healthy' : 'unhealthy');
+      setMessage(data.message);
+      setResponseTime(data.responseTime);
+    } catch (error) {
+      setStatus('unhealthy');
+      setMessage(error instanceof Error ? error.message : 'Failed to connect');
+      setResponseTime(0);
+    }
+  };
+
+  return (
+    <div>
+      <button
+        onClick={handleConnect}
+        disabled={status === 'loading'}
+        style={{
+          marginTop: '24px',
+          padding: '10px 20px',
+          fontSize: '16px',
+          fontWeight: '600',
+          backgroundColor: status === 'loading' ? '#d1d5db' : '#3b82f6',
+          color: 'white',
+          border: 'none',
+          borderRadius: '6px',
+          cursor: status === 'loading' ? 'not-allowed' : 'pointer',
+          opacity: status === 'loading' ? 0.6 : 1,
+        }}
+      >
+        {status === 'loading' ? 'Connecting...' : 'Connect DB'}
+      </button>
+
+      {status !== 'idle' && (
+        <StatusIndicator
+          status={status}
+          message={message}
+          responseTime={responseTime}
+        />
+      )}
+    </div>
+  );
 }
