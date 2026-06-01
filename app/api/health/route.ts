@@ -21,22 +21,27 @@ export async function GET() {
         message: healthResult.message,
         responseTime: healthResult.responseTime,
         timestamp: healthResult.timestamp,
-        database: {
-          connected: dbStatus.connected,
-          poolSize: dbStatus.poolSize,
-          activeConnections: dbStatus.activeConnections,
-          lastError: dbStatus.lastError,
-          lastErrorTime: dbStatus.lastErrorTime,
-        },
+        database: dbStatus,
       },
       { status: statusCode }
     );
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+
     return NextResponse.json(
       {
         status: 'unhealthy',
-        message: 'Failed to check database health',
-        error: error instanceof Error ? error.message : 'Unknown error',
+        message: `Health check failed: ${errorMessage}`,
+        responseTime: 0,
+        timestamp: new Date().toISOString(),
+        database: {
+          connected: false,
+          poolSize: 0,
+          activeConnections: 0,
+          idleConnections: 0,
+          lastError: errorMessage,
+          lastErrorTime: new Date().toISOString(),
+        },
       },
       { status: 503 }
     );
