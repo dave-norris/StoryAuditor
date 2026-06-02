@@ -26,12 +26,13 @@ export interface SignUpResponse {
  * User record from the database
  */
 export interface User {
-  id: string;
+  id: number;
   email: string;
   name: string;
   password_hash: string;
-  created_at: Date;
-  updated_at: Date;
+  is_active: boolean;
+  created_dt: string;
+  updated_dt: string;
 }
 
 /**

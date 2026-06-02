@@ -163,7 +163,7 @@ export class SignUpService {
   public async checkDuplicateUser(email: string): Promise<boolean> {
     try {
       const result = await query(
-        'SELECT 1 FROM users WHERE LOWER(email) = LOWER($1)',
+        'SELECT 1 FROM story_auditor.users WHERE LOWER(email) = LOWER($1)',
         [email]
       );
       return result.rowCount > 0;
@@ -194,9 +194,9 @@ export class SignUpService {
   ): Promise<User> {
     try {
       const result = await query(
-        `INSERT INTO users (email, name, password_hash)
+        `INSERT INTO story_auditor.users (email, name, password_hash)
          VALUES ($1, $2, $3)
-         RETURNING id, email, name, password_hash, created_at, updated_at`,
+         RETURNING id, email, name, password_hash, created_dt, updated_dt`,
         [email, name, passwordHash]
       );
       
