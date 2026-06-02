@@ -193,11 +193,12 @@ export class SignUpService {
     passwordHash: string
   ): Promise<User> {
     try {
+      const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
       const result = await query(
-        `INSERT INTO story_auditor.users (email, name, password_hash)
-         VALUES ($1, $2, $3)
-         RETURNING id, email, name, password_hash, created_dt, updated_dt`,
-        [email, name, passwordHash]
+        `INSERT INTO story_auditor.users (email, name, password_hash, created_dt, updated_dt)
+         VALUES ($1, $2, $3, $4, $5)
+         RETURNING id, email, name, password_hash, is_active, created_dt, updated_dt`,
+        [email, name, passwordHash, today, today]
       );
       
       if (result.rowCount === 0) {

@@ -76,12 +76,13 @@ export async function GET() {
       results.steps[results.steps.length - 1].success = false;
     }
 
-    // Step 6: Try INSERT with correct column names
+    // Step 6: Try INSERT with correct column names and date values
     results.steps.push({ step: 'Try INSERT INTO story_auditor.users with correct columns' });
     try {
+      const today = new Date().toISOString().split('T')[0];
       const insertResult = await query(
-        `INSERT INTO story_auditor.users (email, name, password_hash) VALUES ($1, $2, $3) RETURNING id, email, name, password_hash, created_dt, updated_dt`,
-        ['debug@test.com', 'Debug User', 'hash123']
+        `INSERT INTO story_auditor.users (email, name, password_hash, created_dt, updated_dt) VALUES ($1, $2, $3, $4, $5) RETURNING id, email, name, password_hash, created_dt, updated_dt`,
+        ['debug@test.com', 'Debug User', 'hash123', today, today]
       );
       results.steps[results.steps.length - 1].result = insertResult.rows[0];
       results.steps[results.steps.length - 1].success = true;
