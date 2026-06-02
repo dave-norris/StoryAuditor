@@ -61,7 +61,7 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ onSuccess, onError }) =>
    * Collects form data and submits to API
    * Handles success and error responses
    * 
-   * Validates: Requirements 1.4, 1.5, 9.1, 9.2, 9.3
+   * Validates: Requirements 1.4, 1.5, 9.1, 9.2, 9.3, 10.1, 10.2, 10.3
    */
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -107,11 +107,14 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ onSuccess, onError }) =>
           onSuccess(data.email);
         }
       } else if (response.status === 409) {
-        // Duplicate user (409 Conflict)
+        // Duplicate user (409 Conflict) - treat as email field error
         setState(prev => ({
           ...prev,
           isLoading: false,
-          error: data.error || 'An account with this email already exists'
+          error: null,
+          fieldErrors: {
+            email: data.error || 'An account with this email already exists'
+          }
         }));
 
         if (onError) {
@@ -119,21 +122,26 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ onSuccess, onError }) =>
         }
       } else if (response.status === 400) {
         // Validation error (400 Bad Request)
+        // Extract field-specific error if available
+        const fieldError = data.field ? { [data.field]: data.error } : {};
+        
         setState(prev => ({
           ...prev,
           isLoading: false,
-          error: data.error
+          error: data.field ? null : data.error,
+          fieldErrors: data.field ? fieldError : {}
         }));
 
         if (onError) {
           onError(data.error);
         }
       } else {
-        // Other error (500, etc.)
+        // Other error (500, etc.) - generic error
         setState(prev => ({
           ...prev,
           isLoading: false,
-          error: data.error || 'An error occurred during registration. Please try again later.'
+          error: data.error || 'An error occurred during registration. Please try again later.',
+          fieldErrors: {}
         }));
 
         if (onError) {
@@ -146,7 +154,8 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ onSuccess, onError }) =>
       setState(prev => ({
         ...prev,
         isLoading: false,
-        error: errorMessage
+        error: errorMessage,
+        fieldErrors: {}
       }));
 
       if (onError) {
@@ -157,9 +166,14 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ onSuccess, onError }) =>
 
   /**
    * Render field-specific error message
-   * Displays error below corresponding input field
+   * Returns the error message for a specific field, if any.
+   * This error is displayed below the corresponding input field.
    * 
-   * Validates: Requirement 10.1, 10.2, 10.3
+   * Requirements: 10.1 - Error messages specify which field failed
+   *               10.2 - Error messages are displayed clearly
+   *               10.3 - Non-field errors displayed separately from field errors
+   * 
+   * Validates: Requirements 10.1, 10.2, 10.3
    */
   const renderFieldError = (field: string): string | null => {
     return state.fieldErrors[field] || null;
