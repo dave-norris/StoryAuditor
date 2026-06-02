@@ -62,27 +62,28 @@ export async function GET() {
       results.steps[results.steps.length - 1].success = false;
     }
 
-    // Step 5: SELECT * without schema prefix
-    results.steps.push({ step: 'SELECT * FROM users' });
+    // Step 5: Try the actual duplicate check query with schema
+    results.steps.push({ step: 'Try duplicate check: SELECT 1 FROM story_auditor.users WHERE LOWER(email) = LOWER($1)' });
     try {
-      const selectWithoutSchemaResult = await query(
-        `SELECT * FROM users`
+      const duplicateCheckResult = await query(
+        'SELECT 1 FROM story_auditor.users WHERE LOWER(email) = LOWER($1)',
+        ['test@example.com']
       );
-      results.steps[results.steps.length - 1].result = `${selectWithoutSchemaResult.rowCount} rows`;
+      results.steps[results.steps.length - 1].result = `${duplicateCheckResult.rowCount} rows`;
       results.steps[results.steps.length - 1].success = true;
     } catch (error) {
       results.steps[results.steps.length - 1].error = error instanceof Error ? error.message : String(error);
       results.steps[results.steps.length - 1].success = false;
     }
 
-    // Step 6: Try the actual duplicate check query
-    results.steps.push({ step: 'Try duplicate check: SELECT 1 FROM users WHERE LOWER(email) = LOWER($1)' });
+    // Step 6: Try INSERT with correct column names
+    results.steps.push({ step: 'Try INSERT INTO story_auditor.users with correct columns' });
     try {
-      const duplicateCheckResult = await query(
-        'SELECT 1 FROM users WHERE LOWER(email) = LOWER($1)',
-        ['test@example.com']
+      const insertResult = await query(
+        `INSERT INTO story_auditor.users (email, name, password_hash) VALUES ($1, $2, $3) RETURNING id, email, name, password_hash, created_dt, updated_dt`,
+        ['debug@test.com', 'Debug User', 'hash123']
       );
-      results.steps[results.steps.length - 1].result = `${duplicateCheckResult.rowCount} rows`;
+      results.steps[results.steps.length - 1].result = insertResult.rows[0];
       results.steps[results.steps.length - 1].success = true;
     } catch (error) {
       results.steps[results.steps.length - 1].error = error instanceof Error ? error.message : String(error);
