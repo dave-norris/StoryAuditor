@@ -1,6 +1,6 @@
 'use client';
 
-import { SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
+import { SignInButton, UserButton } from '@clerk/nextjs';
 import { useUser } from '@clerk/nextjs';
 import Link from 'next/link';
 
@@ -12,14 +12,9 @@ export function AuthHeader() {
       <h1>StoryAuditor</h1>
       <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
         {!isSignedIn ? (
-          <>
-            <SignInButton mode="modal">
-              <button className="button">Sign In</button>
-            </SignInButton>
-            <SignUpButton mode="modal">
-              <button className="button">Sign Up</button>
-            </SignUpButton>
-          </>
+          <SignInButton mode="modal">
+            <button className="button">Sign In</button>
+          </SignInButton>
         ) : (
           <>
             <Link href="/dashboard" style={{ textDecoration: 'none' }}>

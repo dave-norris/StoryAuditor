@@ -32,6 +32,16 @@ export default function Dashboard() {
         </p>
       </div>
 
+      <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#f3f4f6', borderRadius: '8px' }}>
+        <h3 style={{ marginBottom: '1rem', fontWeight: 'bold' }}>User Information</h3>
+        <div style={{ display: 'grid', gap: '0.5rem', color: '#666' }}>
+          <p><strong>User ID:</strong> <code style={{ backgroundColor: '#e5e7eb', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.9rem' }}>{user?.id}</code></p>
+          <p><strong>Email:</strong> {user?.primaryEmailAddress?.emailAddress}</p>
+          <p><strong>Name:</strong> {user?.firstName} {user?.lastName}</p>
+          <p><strong>Created:</strong> {user?.createdAt?.toLocaleDateString()}</p>
+        </div>
+      </div>
+
       <div style={{ marginTop: '2rem' }}>
         <p style={{ color: '#666' }}>Manuscript management features coming soon...</p>
       </div>
