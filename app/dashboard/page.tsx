@@ -1,6 +1,7 @@
 'use client';
 
 import { UserButton, useUser } from '@clerk/nextjs';
+import { PricingTable } from '@clerk/billing/react';
 
 export default function Dashboard() {
   const { user, isLoaded } = useUser();
@@ -40,6 +41,11 @@ export default function Dashboard() {
           <p><strong>Name:</strong> {user?.firstName} {user?.lastName}</p>
           <p><strong>Created:</strong> {user?.createdAt?.toLocaleDateString()}</p>
         </div>
+      </div>
+
+      <div style={{ marginTop: '2rem' }}>
+        <h3 style={{ marginBottom: '1rem', fontWeight: 'bold' }}>Subscription & Billing</h3>
+        <PricingTable />
       </div>
 
       <div style={{ marginTop: '2rem' }}>
