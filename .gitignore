@@ -10,6 +10,7 @@ node_modules
 # Testing
 /coverage
 /.nyc_output
+/lib/services/__tests__
 
 # Next.js
 /.next/
