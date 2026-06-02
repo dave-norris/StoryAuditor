@@ -19,6 +19,7 @@ export interface SignUpResponse {
   success: boolean;
   email?: string;
   error?: string;
+  field?: string;
   statusCode: number;
 }
 

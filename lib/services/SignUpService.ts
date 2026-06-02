@@ -35,6 +35,7 @@ export class SignUpService {
       return {
         success: false,
         error: emailValidation.error,
+        field: 'email',
         statusCode: 400
       };
     }
@@ -45,6 +46,7 @@ export class SignUpService {
       return {
         success: false,
         error: nameValidation.error,
+        field: 'name',
         statusCode: 400
       };
     }
@@ -55,6 +57,7 @@ export class SignUpService {
       return {
         success: false,
         error: passwordValidation.error,
+        field: 'password',
         statusCode: 400
       };
     }
@@ -66,6 +69,7 @@ export class SignUpService {
         return {
           success: false,
           error: 'An account with this email already exists',
+          field: 'email',
           statusCode: 409
         };
       }
