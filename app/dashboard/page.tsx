@@ -1,7 +1,6 @@
 'use client';
 
 import { UserButton, useUser } from '@clerk/nextjs';
-import { PricingTable } from '@clerk/billing/react';
 
 export default function Dashboard() {
   const { user, isLoaded } = useUser();
@@ -9,6 +8,13 @@ export default function Dashboard() {
   if (!isLoaded) {
     return <div className="container"><p>Loading...</p></div>;
   }
+
+  const handleSubscribe = () => {
+    if (user?.id) {
+      // Link to Clerk's billing portal for this user
+      window.location.href = `https://dashboard.clerk.com/apps/~/billing/checkout?user_id=${user.id}&plan_id=pro`;
+    }
+  };
 
   return (
     <div className="container">
@@ -43,9 +49,27 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div style={{ marginTop: '2rem' }}>
-        <h3 style={{ marginBottom: '1rem', fontWeight: 'bold' }}>Subscription & Billing</h3>
-        <PricingTable />
+      <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#fef3c7', borderRadius: '8px', border: '1px solid #f59e0b' }}>
+        <h3 style={{ marginBottom: '1rem', fontWeight: 'bold', color: '#92400e' }}>Subscription & Billing</h3>
+        <p style={{ color: '#92400e', marginBottom: '1.5rem' }}>
+          Unlock full access to StoryAuditor with a professional subscription.
+        </p>
+        <div style={{ maxWidth: '400px', border: '2px solid #f59e0b', padding: '2rem', borderRadius: '8px', backgroundColor: '#fffbeb', textAlign: 'center' }}>
+          <h4 style={{ color: '#92400e', fontSize: '1.5rem', marginBottom: '0.5rem' }}>StoryAuditor Pro</h4>
+          <p style={{ color: '#92400e', fontSize: '2rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>$19.00<span style={{ fontSize: '0.9rem', fontWeight: 'normal' }}>/month</span></p>
+          <ul style={{ color: '#92400e', fontSize: '0.95rem', marginBottom: '1.5rem', listStyle: 'none', padding: 0, textAlign: 'left' }}>
+            <li style={{ marginBottom: '0.5rem' }}>✓ Unlimited manuscript audits</li>
+            <li style={{ marginBottom: '0.5rem' }}>✓ Comprehensive feedback & analysis</li>
+            <li style={{ marginBottom: '0.5rem' }}>✓ Priority support</li>
+            <li>✓ Access to all features</li>
+          </ul>
+          <button 
+            onClick={handleSubscribe}
+            style={{ width: '100%', padding: '0.75rem', backgroundColor: '#f59e0b', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '1rem', fontWeight: 'bold' }}
+          >
+            Subscribe Now
+          </button>
+        </div>
       </div>
 
       <div style={{ marginTop: '2rem' }}>
