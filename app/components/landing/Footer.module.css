@@ -1,0 +1,32 @@
+.footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tagline {
+  color: var(--ink);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+.trademark {
+  color: var(--ink-muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  margin: 0 0 0.75rem;
+}
+
+.copyright {
+  color: var(--ink-muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  margin: 0;
+}
