@@ -1,6 +1,6 @@
-import {ClerkProvider} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeProvider } from "next-themes";
 import type { Metadata } from "next";
-import { VersionFooter } from "./components/VersionFooter";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,12 +15,16 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <div style={{ flex: 1 }}>
+      <html lang="en" suppressHydrationWarning>
+        <body>
+          <ThemeProvider
+            attribute="data-theme"
+            defaultTheme="system"
+            themes={["paper", "night"]}
+            enableSystem={true}
+          >
             {children}
-          </div>
-          <VersionFooter />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
