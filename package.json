@@ -1,5 +1,5 @@
 {
-  "name": "StoryAuditor",
+  "name": "storyauditor",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -18,6 +18,7 @@
     "@clerk/nextjs": "^7.4.2",
     "@types/bcrypt": "^6.0.0",
     "bcrypt": "^6.0.0",
+    "lucide-react": "1.17.0",
     "next": "^16.2.6",
     "next-themes": "^0.4.6",
     "pg": "^8.21.0",
