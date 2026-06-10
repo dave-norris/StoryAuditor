@@ -48,7 +48,6 @@ describe('Focus Indicators on Interactive Elements (Req 12.2)', () => {
       'Nav.module.css',
       'Hero.module.css',
       'ThemeToggle.module.css',
-      'PricingCard.module.css',
     ];
 
     for (const moduleName of interactiveModules) {
@@ -63,7 +62,6 @@ describe('Focus Indicators on Interactive Elements (Req 12.2)', () => {
       'Nav.module.css',
       'Hero.module.css',
       'ThemeToggle.module.css',
-      'PricingCard.module.css',
     ];
 
     for (const moduleName of interactiveModules) {
@@ -86,7 +84,6 @@ describe('Focus Indicators on Interactive Elements (Req 12.2)', () => {
       'Nav.module.css',
       'Hero.module.css',
       'ThemeToggle.module.css',
-      'PricingCard.module.css',
     ];
 
     for (const moduleName of interactiveModules) {

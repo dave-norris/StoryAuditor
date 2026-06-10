@@ -1,5 +1,4 @@
 .footer {
-  background: var(--surface);
   border-top: 1px solid var(--border);
   padding: 2rem 1rem;
 }
@@ -7,26 +6,22 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .tagline {
-  color: var(--ink);
+  color: var(--ink-muted);
   font-size: 0.875rem;
   line-height: 1.5;
-  margin: 0 0 1rem;
+  margin: 0;
 }
 
-.trademark {
+.domain {
   color: var(--ink-muted);
-  font-size: 0.75rem;
-  line-height: 1.5;
-  margin: 0 0 0.75rem;
-}
-
-.copyright {
-  color: var(--ink-muted);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   margin: 0;
+  text-align: right;
 }

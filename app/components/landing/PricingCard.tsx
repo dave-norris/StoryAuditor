@@ -4,9 +4,7 @@ interface PricingCardProps {
   name: string;
   price: string;
   priceLabel?: string;
-  features: string[];
-  ctaLabel: string;
-  ctaHref: string;
+  description: string;
   badge?: string;
   highlighted?: boolean;
 }
@@ -15,9 +13,7 @@ export function PricingCard({
   name,
   price,
   priceLabel,
-  features,
-  ctaLabel,
-  ctaHref,
+  description,
   badge,
   highlighted,
 }: PricingCardProps) {
@@ -31,16 +27,7 @@ export function PricingCard({
         <span className={styles.price}>{price}</span>
         {priceLabel && <span className={styles.priceLabel}>{priceLabel}</span>}
       </div>
-      <ul className={styles.features}>
-        {features.map((feature) => (
-          <li key={feature} className={styles.feature}>
-            {feature}
-          </li>
-        ))}
-      </ul>
-      <a href={ctaHref} className={styles.cta}>
-        {ctaLabel}
-      </a>
+      <p className={styles.description}>{description}</p>
     </article>
   );
 }

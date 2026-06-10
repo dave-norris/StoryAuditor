@@ -17,15 +17,14 @@
   border: none;
   border-radius: 9999px;
   background: transparent;
-  color: var(--ink-muted);
   cursor: pointer;
-  font-size: 1.125rem;
+  font-size: 0;
   line-height: 1;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s;
 }
 
 .option:hover {
-  color: var(--ink);
+  background: var(--brand-tint);
 }
 
 .option:focus-visible {
@@ -35,5 +34,4 @@
 
 .active {
   background: var(--brand-tint);
-  color: var(--ink);
 }

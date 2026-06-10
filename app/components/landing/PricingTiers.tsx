@@ -5,30 +5,22 @@ const TIERS = [
   {
     name: "Hook report",
     price: "Free",
-    features: ["First chapter", "No credit card", "Never expires"],
-    ctaLabel: "Analyze free",
-    ctaHref: "/analyze",
+    description: "First chapter, no card, never expires.",
   },
   {
     name: "Book pass",
     price: "$59",
     priceLabel: "one-time",
-    features: [
-      "One manuscript",
-      "Every feature",
-      "Unlimited re-runs for 60 days",
-    ],
-    ctaLabel: "Get started",
-    ctaHref: "/signup?plan=book-pass",
+    description:
+      "One manuscript, every feature, unlimited re-runs for 60 days.",
     badge: "Most popular",
     highlighted: true,
   },
   {
     name: "Author plan",
     price: "$18/mo",
-    features: ["Unlimited manuscripts"],
-    ctaLabel: "Subscribe",
-    ctaHref: "/signup?plan=author",
+    description:
+      "Unlimited manuscripts for authors who never stop writing.",
   },
 ] as const;
 
@@ -43,9 +35,7 @@ export function PricingTiers() {
             name={tier.name}
             price={tier.price}
             priceLabel={"priceLabel" in tier ? tier.priceLabel : undefined}
-            features={[...tier.features]}
-            ctaLabel={tier.ctaLabel}
-            ctaHref={tier.ctaHref}
+            description={tier.description}
             badge={"badge" in tier ? tier.badge : undefined}
             highlighted={"highlighted" in tier ? tier.highlighted : undefined}
           />

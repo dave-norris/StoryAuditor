@@ -1,7 +1,8 @@
+import type { ReactNode } from "react";
 import styles from "./FeatureCard.module.css";
 
 interface FeatureCardProps {
-  icon: string;
+  icon: ReactNode;
   title: string;
   description: string;
 }
@@ -9,9 +10,9 @@ interface FeatureCardProps {
 export function FeatureCard({ icon, title, description }: FeatureCardProps) {
   return (
     <article className={styles.card}>
-      <span className={styles.icon} aria-hidden="true">
+      <div className={styles.iconContainer} aria-hidden="true">
         {icon}
-      </span>
+      </div>
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.description}>{description}</p>
     </article>

@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { Sun, Monitor, Moon } from "lucide-react";
 import styles from "./ThemeToggle.module.css";
 
 type ThemeState = "light" | "system" | "dark";
@@ -14,10 +15,10 @@ const LABELS: Record<ThemeState, string> = {
   dark: "Dark theme",
 };
 
-const ICONS: Record<ThemeState, string> = {
-  light: "☀️",
-  system: "💻",
-  dark: "🌙",
+const ICONS: Record<ThemeState, React.ComponentType<{ size?: number; color?: string }>> = {
+  light: Sun,
+  system: Monitor,
+  dark: Moon,
 };
 
 function resolveState(theme: string | undefined): ThemeState {
@@ -61,17 +62,20 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <div className={styles.toggle} role="group" aria-label="Theme switcher">
-        {STATES.map((state) => (
-          <button
-            key={state}
-            className={styles.option}
-            type="button"
-            aria-label={LABELS[state]}
-            tabIndex={0}
-          >
-            {ICONS[state]}
-          </button>
-        ))}
+        {STATES.map((state) => {
+          const Icon = ICONS[state];
+          return (
+            <button
+              key={state}
+              className={styles.option}
+              type="button"
+              aria-label={LABELS[state]}
+              tabIndex={0}
+            >
+              <Icon size={18} color="var(--ink-muted)" />
+            </button>
+          );
+        })}
       </div>
     );
   }
@@ -80,6 +84,7 @@ export function ThemeToggle() {
     <div className={styles.toggle} role="group" aria-label="Theme switcher">
       {STATES.map((state) => {
         const isActive = state === currentState;
+        const Icon = ICONS[state];
         return (
           <button
             key={state}
@@ -91,7 +96,7 @@ export function ThemeToggle() {
             onKeyDown={(e) => handleKeyDown(e, state)}
             tabIndex={0}
           >
-            {ICONS[state]}
+            <Icon size={18} color={isActive ? "var(--brand)" : "var(--ink-muted)"} />
           </button>
         );
       })}

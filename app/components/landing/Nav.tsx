@@ -1,4 +1,6 @@
+import { BookOpen } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { MobileMenu } from "./MobileMenu";
 import styles from "./Nav.module.css";
 
 export function Nav() {
@@ -6,9 +8,12 @@ export function Nav() {
     <header className={styles.header} data-section="nav">
       <nav className={styles.nav} aria-label="Main navigation">
         <a href="/" className={styles.brand}>
+          <BookOpen size={20} aria-hidden="true" />
           StoryAuditor
         </a>
-        <div className={styles.links}>
+
+        {/* Desktop links — hidden below 768px */}
+        <div className={styles.desktopLinks}>
           <a href="#feature-grid" className={styles.anchor}>
             Features
           </a>
@@ -16,15 +21,24 @@ export function Nav() {
             Pricing
           </a>
           <a href="#sample" className={styles.anchor}>
-            Sample Report
+            Sample report
           </a>
+        </div>
+
+        <div className={styles.actions}>
+          {/* Sign in — desktop only */}
           <a href="/login" className={styles.signIn}>
             Sign in
           </a>
+
           <ThemeToggle />
+
           <a href="/analyze" className={styles.tryFree}>
             Try free
           </a>
+
+          {/* Mobile hamburger menu */}
+          <MobileMenu />
         </div>
       </nav>
     </header>

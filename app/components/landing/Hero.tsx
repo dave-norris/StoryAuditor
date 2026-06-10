@@ -13,21 +13,21 @@ export function Hero() {
           </h1>
 
           <p className={styles.subheadline}>
-            Upload your manuscript and get an AI-powered hook report with chapter scores,
-            pacing curves, and line-level polish flags — so you publish with confidence.
+            StoryAuditor reads your manuscript like an editor: hook strength, chapter-ending pull, pacing dips, and the line-level polish that gets you Vellum-ready.
           </p>
 
-          <a href="/analyze" className={styles.primaryCta}>
-            Analyze my first chapter — free
-          </a>
+          <div className={styles.ctaRow}>
+            <a href="/analyze" className={styles.primaryCta}>
+              Analyze my first chapter — free
+            </a>
+            <a href="/sample" className={styles.secondaryCta}>
+              See a sample report
+            </a>
+          </div>
 
           <p className={styles.reassurance}>
             No credit card. Upload a .docx, get your report in minutes.
           </p>
-
-          <a href="/sample" className={styles.secondaryCta}>
-            See a sample report
-          </a>
         </div>
 
         <div className={styles.cardColumn}>

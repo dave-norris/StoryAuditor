@@ -15,15 +15,23 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 1.25rem 1rem;
+  padding: 1.5rem 1rem;
   text-align: center;
 }
 
-.cardText {
+.value {
   color: var(--ink);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 700;
   margin: 0;
+  line-height: 1.2;
+}
+
+.label {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0.25rem 0 0;
   line-height: 1.4;
 }
 
@@ -39,10 +47,14 @@
 
   .card {
     flex: 1;
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
   }
 
-  .cardText {
-    font-size: 1.125rem;
+  .value {
+    font-size: 2.5rem;
+  }
+
+  .label {
+    font-size: 1rem;
   }
 }

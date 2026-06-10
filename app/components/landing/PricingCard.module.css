@@ -17,17 +17,12 @@
 .badge {
   display: inline-block;
   align-self: flex-start;
-  background: var(--brand-tint);
-  color: var(--brand-tint-text);
+  background: var(--brand);
+  color: var(--surface);
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
-}
-
-.highlighted .badge {
-  background: var(--brand);
-  color: var(--surface);
 }
 
 .name {
@@ -55,64 +50,9 @@
   color: var(--ink-muted);
 }
 
-.features {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  flex: 1;
-}
-
-.feature {
+.description {
   font-size: 0.875rem;
   color: var(--ink-muted);
-  padding-left: 1.25rem;
-  position: relative;
-}
-
-.feature::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--success);
-  font-weight: 600;
-}
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-decoration: none;
-  text-align: center;
-  cursor: pointer;
-  background: var(--brand-tint);
-  color: var(--brand-tint-text);
-}
-
-.cta:hover {
-  background: var(--brand);
-  color: var(--surface);
-}
-
-.cta:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-.highlighted .cta {
-  background: var(--brand);
-  color: var(--surface);
-}
-
-.highlighted .cta:hover {
-  background: var(--brand-strong);
+  margin: 0;
+  line-height: 1.5;
 }

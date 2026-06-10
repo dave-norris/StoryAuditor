@@ -1,44 +1,45 @@
+import { Bot, Zap, Anchor, TrendingUp, AlignLeft, FileOutput } from "lucide-react";
 import { FeatureCard } from "./FeatureCard";
 import styles from "./FeatureGrid.module.css";
 
 const FEATURES = [
   {
-    icon: "🤖",
+    icon: <Bot size={24} color="var(--brand)" />,
     title: "AI beta reader",
     description:
-      "Get chapter-by-chapter feedback that mirrors a professional developmental editor.",
+      "Chapter-by-chapter reader reactions and put-it-down risk points.",
   },
   {
-    icon: "⚡",
+    icon: <Zap size={24} color="var(--brand)" />,
     title: "Cliffhanger score",
     description:
-      "See how each chapter ending compels readers to turn the page.",
+      "How hard each chapter ending pulls readers into the next.",
   },
   {
-    icon: "🪝",
+    icon: <Anchor size={24} color="var(--brand)" />,
     title: "Hook strength",
     description:
-      "Measure how effectively your opening grabs and holds attention.",
+      "Would a browsing reader keep going past page one?",
   },
   {
-    icon: "📈",
+    icon: <TrendingUp size={24} color="var(--brand)" />,
     title: "Pacing curve",
     description:
-      "Visualize tension and momentum across your entire manuscript.",
+      "See where your story drags before reviewers tell you.",
   },
   {
-    icon: "✍️",
+    icon: <AlignLeft size={24} color="var(--brand)" />,
     title: "Line-level polish",
     description:
-      "Flag overused words, passive voice, and prose-level issues paragraph by paragraph.",
+      "Filter words, echoes, adverbs, passive voice — unlimited runs.",
   },
   {
-    icon: "📖",
+    icon: <FileOutput size={24} color="var(--brand)" />,
     title: "Vellum & Atticus prep",
     description:
-      "Export a clean, formatter-ready file with heading styles and scene breaks in place.",
+      "One click cleans your .docx for a flawless formatter import.",
   },
-] as const;
+];
 
 export function FeatureGrid() {
   return (
