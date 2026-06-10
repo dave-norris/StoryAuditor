@@ -1,7 +1,7 @@
 import { SampleReportCard } from './SampleReportCard';
 import styles from './Hero.module.css';
 
-export function Hero(): JSX.Element {
+export function Hero() {
   return (
     <section className={styles.hero} data-section="hero">
       <div className={styles.container}>
