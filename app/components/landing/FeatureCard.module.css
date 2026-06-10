@@ -1,0 +1,28 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.icon {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  margin: 0;
+  line-height: 1.5;
+}

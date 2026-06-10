@@ -1,0 +1,48 @@
+.section {
+  padding: 2rem 1rem;
+  background: var(--brand-tint);
+}
+
+.strip {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+
+.cardText {
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 3rem 2rem;
+  }
+
+  .strip {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .card {
+    flex: 1;
+    padding: 1.5rem;
+  }
+
+  .cardText {
+    font-size: 1.125rem;
+  }
+}

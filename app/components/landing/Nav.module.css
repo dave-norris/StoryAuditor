@@ -1,0 +1,153 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  min-height: 56px;
+}
+
+.brand {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--brand);
+  text-decoration: none;
+  white-space: nowrap;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.brand:hover {
+  color: var(--brand-strong);
+}
+
+.brand:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+  flex-wrap: nowrap;
+}
+
+.anchor {
+  color: var(--ink-muted);
+  text-decoration: none;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.25rem;
+  white-space: nowrap;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anchor:hover {
+  color: var(--ink);
+}
+
+.anchor:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.signIn {
+  color: var(--ink-muted);
+  text-decoration: none;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.25rem;
+  white-space: nowrap;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signIn:hover {
+  color: var(--ink);
+}
+
+.signIn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.tryFree {
+  background: var(--brand);
+  color: var(--surface);
+  border: none;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  white-space: nowrap;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.tryFree:hover {
+  background: var(--brand-strong);
+}
+
+.tryFree:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    gap: 0.75rem;
+    padding: 0.75rem 2rem;
+  }
+
+  .links {
+    gap: 0.5rem;
+  }
+
+  .anchor {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.5rem;
+  }
+
+  .signIn {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.5rem;
+  }
+
+  .tryFree {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .brand {
+    font-size: 1.125rem;
+  }
+}

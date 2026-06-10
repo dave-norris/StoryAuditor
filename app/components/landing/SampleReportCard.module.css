@@ -1,0 +1,60 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 320px;
+  width: 100%;
+}
+
+.title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+  margin: 0 0 1rem;
+}
+
+.scores {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.scoreRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scoreLabel {
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+
+.scoreValue {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.flags {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flagsLabel {
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+
+.flagsValue {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--gold);
+}
