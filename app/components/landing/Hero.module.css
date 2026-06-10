@@ -1,6 +1,7 @@
 .hero {
   padding: 5rem 1rem 3rem;
   background: var(--bg);
+  overflow-x: hidden;
 }
 
 .container {
