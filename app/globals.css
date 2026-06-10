@@ -1,4 +1,5 @@
-@import './tokens.css';
+@import './themes/paper.css';
+@import './themes/night.css';
 
 *,
 *::before,

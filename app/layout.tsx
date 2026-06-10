@@ -19,9 +19,10 @@ export default function RootLayout({
         <body>
           <ThemeProvider
             attribute="data-theme"
-            defaultTheme="paper"
+            defaultTheme="system"
             themes={["paper", "night"]}
-            enableSystem={false}
+            enableSystem={true}
+            value={{ light: "paper", dark: "night" }}
           >
             {children}
           </ThemeProvider>

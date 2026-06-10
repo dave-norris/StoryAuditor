@@ -7,7 +7,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 /**
- * Parse tokens.css and extract custom property names from each theme selector.
+ * Parse theme CSS files and extract custom property names from each theme selector.
  * Returns a map of theme name -> set of token names.
  */
 function parseThemeTokens(cssContent: string): Map<string, Set<string>> {
@@ -37,8 +37,9 @@ function parseThemeTokens(cssContent: string): Map<string, Set<string>> {
 }
 
 describe('Property 3: Theme token completeness and symmetry', () => {
-  const tokensPath = path.resolve(__dirname, '../../tokens.css');
-  const cssContent = fs.readFileSync(tokensPath, 'utf-8');
+  const paperPath = path.resolve(__dirname, '../../themes/paper.css');
+  const nightPath = path.resolve(__dirname, '../../themes/night.css');
+  const cssContent = fs.readFileSync(paperPath, 'utf-8') + '\n' + fs.readFileSync(nightPath, 'utf-8');
   const themes = parseThemeTokens(cssContent);
 
   const paperTokens = themes.get('paper');

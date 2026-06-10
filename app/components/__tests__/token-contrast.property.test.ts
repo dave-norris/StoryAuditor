@@ -57,11 +57,12 @@ function contrastRatio(hex1: string, hex2: string): number {
 }
 
 /**
- * Parse tokens.css and extract token values per theme.
+ * Parse theme CSS files and extract token values per theme.
  */
 function parseTokens(): Record<string, Record<string, string>> {
-  const cssPath = resolve(__dirname, '../../tokens.css');
-  const css = readFileSync(cssPath, 'utf-8');
+  const paperPath = resolve(__dirname, '../../themes/paper.css');
+  const nightPath = resolve(__dirname, '../../themes/night.css');
+  const css = readFileSync(paperPath, 'utf-8') + '\n' + readFileSync(nightPath, 'utf-8');
 
   const themes: Record<string, Record<string, string>> = {};
   const themeRegex = /\[data-theme="(\w+)"\]\s*\{([^}]+)\}/g;
@@ -101,7 +102,7 @@ const THEME_NAMES = ['paper', 'night'] as const;
 describe('Property 5: Design token contrast ratios meet WCAG AA', () => {
   const themes = parseTokens();
 
-  it('should have both paper and night themes parsed from tokens.css', () => {
+  it('should have both paper and night themes parsed from theme files', () => {
     expect(themes.paper).toBeDefined();
     expect(themes.night).toBeDefined();
   });

@@ -1,0 +1,14 @@
+[data-theme="night"] {
+  --bg: #1E191F;
+  --surface: #2B242C;
+  --border: #3A323B;
+  --ink: #EDE6E0;
+  --ink-muted: #A89E97;
+  --brand: #C8788F;
+  --brand-strong: #DDA2B4;
+  --brand-tint: #3D2630;
+  --brand-tint-text: #E5B9C6;
+  --gold: #D9AE5F;
+  --success: #7FAE8E;
+  --warning-flag: #E08B5A;
+}

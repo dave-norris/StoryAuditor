@@ -5,25 +5,26 @@ import { useEffect, useState } from "react";
 import { Sun, Monitor, Moon } from "lucide-react";
 import styles from "./ThemeToggle.module.css";
 
-type ThemeState = "light" | "system" | "dark";
+type ThemeChoice = "light" | "system" | "dark";
 
-const STATES: ThemeState[] = ["light", "system", "dark"];
+const CHOICES: ThemeChoice[] = ["light", "system", "dark"];
 
-const LABELS: Record<ThemeState, string> = {
+const LABELS: Record<ThemeChoice, string> = {
   light: "Light theme",
   system: "System theme",
   dark: "Dark theme",
 };
 
-const ICONS: Record<ThemeState, React.ComponentType<{ size?: number; color?: string }>> = {
+const ICONS: Record<ThemeChoice, React.ComponentType<{ size?: number; color?: string }>> = {
   light: Sun,
   system: Monitor,
   dark: Moon,
 };
 
-function resolveState(theme: string | undefined): ThemeState {
-  if (theme === "paper") return "light";
-  if (theme === "night") return "dark";
+/** Map the stored theme value back to the user's choice */
+function resolveChoice(theme: string | undefined): ThemeChoice {
+  if (theme === "light") return "light";
+  if (theme === "dark") return "dark";
   return "system";
 }
 
@@ -35,26 +36,16 @@ export function ThemeToggle() {
     setMounted(true);
   }, []);
 
-  const currentState = resolveState(theme);
+  const currentChoice = resolveChoice(theme);
 
-  function handleSelect(state: ThemeState) {
-    switch (state) {
-      case "light":
-        setTheme("paper");
-        break;
-      case "dark":
-        setTheme("night");
-        break;
-      case "system":
-        setTheme("system");
-        break;
-    }
+  function handleSelect(choice: ThemeChoice) {
+    setTheme(choice);
   }
 
-  function handleKeyDown(e: React.KeyboardEvent<HTMLButtonElement>, state: ThemeState) {
+  function handleKeyDown(e: React.KeyboardEvent<HTMLButtonElement>, choice: ThemeChoice) {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      handleSelect(state);
+      handleSelect(choice);
     }
   }
 
@@ -62,14 +53,14 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <div className={styles.toggle} role="group" aria-label="Theme switcher">
-        {STATES.map((state) => {
-          const Icon = ICONS[state];
+        {CHOICES.map((choice) => {
+          const Icon = ICONS[choice];
           return (
             <button
-              key={state}
+              key={choice}
               className={styles.option}
               type="button"
-              aria-label={LABELS[state]}
+              aria-label={LABELS[choice]}
               tabIndex={0}
             >
               <Icon size={18} color="var(--ink-muted)" />
@@ -82,18 +73,18 @@ export function ThemeToggle() {
 
   return (
     <div className={styles.toggle} role="group" aria-label="Theme switcher">
-      {STATES.map((state) => {
-        const isActive = state === currentState;
-        const Icon = ICONS[state];
+      {CHOICES.map((choice) => {
+        const isActive = choice === currentChoice;
+        const Icon = ICONS[choice];
         return (
           <button
-            key={state}
+            key={choice}
             className={`${styles.option} ${isActive ? styles.active : ""}`}
             type="button"
-            aria-label={`${LABELS[state]}${isActive ? " (active)" : ""}`}
+            aria-label={`${LABELS[choice]}${isActive ? " (active)" : ""}`}
             aria-pressed={isActive}
-            onClick={() => handleSelect(state)}
-            onKeyDown={(e) => handleKeyDown(e, state)}
+            onClick={() => handleSelect(choice)}
+            onKeyDown={(e) => handleKeyDown(e, choice)}
             tabIndex={0}
           >
             <Icon size={18} color={isActive ? "var(--brand)" : "var(--ink-muted)"} />
