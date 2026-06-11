@@ -17,8 +17,8 @@ export function AuthHeader() {
           </SignInButton>
         ) : (
           <>
-            <Link href="/dashboard" style={{ textDecoration: 'none' }}>
-              <button className="button">Dashboard</button>
+            <Link href="/app" style={{ textDecoration: 'none' }}>
+              <button className="button">Open App</button>
             </Link>
             <UserButton />
           </>

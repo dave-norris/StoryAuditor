@@ -16,7 +16,7 @@ import { createRouteMatcher } from '@clerk/nextjs/server';
  * **Validates: Requirements 1.2, 1.4**
  */
 
-const isProtectedRoute = createRouteMatcher(['/dashboard(.*)', '/app(.*)']);
+const isProtectedRoute = createRouteMatcher(['/app(.*)']);
 
 /**
  * Creates a minimal NextRequest-like object with the pathname needed
@@ -47,11 +47,7 @@ const pathSegmentArb = fc.array(pathCharArb, { minLength: 0, maxLength: 30 })
  */
 const appPathArb = pathSegmentArb.map((suffix) => `/app${suffix}`);
 
-/**
- * Arbitrary that generates paths starting with `/dashboard` followed by optional segments.
- * Used for regression testing existing route protection.
- */
-const dashboardPathArb = pathSegmentArb.map((suffix) => `/dashboard${suffix}`);
+
 
 describe('Property 1: Route matcher protects all /app sub-routes', () => {
   it('should match any path starting with /app', () => {
@@ -69,13 +65,5 @@ describe('Property 1: Route matcher protects all /app sub-routes', () => {
     expect(result).toBe(false);
   });
 
-  it('should still match /dashboard paths (regression)', () => {
-    fc.assert(
-      fc.property(dashboardPathArb, (path) => {
-        const result = isProtectedRoute(fakeRequest(path));
-        expect(result).toBe(true);
-      }),
-      { numRuns: 100 }
-    );
-  });
+
 });

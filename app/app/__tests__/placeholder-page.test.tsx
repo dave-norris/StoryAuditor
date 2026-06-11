@@ -45,7 +45,7 @@ describe('Placeholder Page - UserButton (Req 2.3)', () => {
   });
 });
 
-describe('Placeholder Page - Navigation Links (Req 4.1, 4.2, 4.4)', () => {
+describe('Placeholder Page - Navigation Links (Req 4.1, 4.4)', () => {
   it('has a link to "/" with descriptive text', () => {
     const html = renderToString(React.createElement(AppPage));
     // Should contain an anchor pointing to "/"
@@ -54,15 +54,5 @@ describe('Placeholder Page - Navigation Links (Req 4.1, 4.2, 4.4)', () => {
     const homeLinkMatch = html.match(/<a[^>]*href="\/"[^>]*>([^<]+)<\/a>/);
     expect(homeLinkMatch).not.toBeNull();
     expect(homeLinkMatch![1].trim().length).toBeGreaterThan(0);
-  });
-
-  it('has a link to "/dashboard" with descriptive text', () => {
-    const html = renderToString(React.createElement(AppPage));
-    // Should contain an anchor pointing to "/dashboard"
-    expect(html).toMatch(/<a[^>]*href="\/dashboard"/);
-    // The link text should be descriptive (not empty)
-    const dashLinkMatch = html.match(/<a[^>]*href="\/dashboard"[^>]*>([^<]+)<\/a>/);
-    expect(dashLinkMatch).not.toBeNull();
-    expect(dashLinkMatch![1].trim().length).toBeGreaterThan(0);
   });
 });

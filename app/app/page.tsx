@@ -14,7 +14,6 @@ export default function AppPage() {
       </div>
       <nav className={styles.navLinks}>
         <Link href="/">Back to Home</Link>
-        <Link href="/dashboard">Go to Dashboard</Link>
       </nav>
     </main>
   );
