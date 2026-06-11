@@ -6,6 +6,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "StoryAuditor",
   description: "A simple and elegant application",
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
