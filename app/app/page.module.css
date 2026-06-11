@@ -1,10 +1,12 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
   min-height: 100vh;
   padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
   background: var(--bg);
   color: var(--ink);
 }
@@ -14,23 +16,21 @@
   font-weight: 800;
   color: var(--ink);
   margin: 0 0 0.5rem;
-}
-
-.status {
-  font-size: 1rem;
-  color: var(--ink-muted);
-  margin: 0 0 2rem;
+  align-self: center;
 }
 
 .userButton {
   margin-bottom: 2rem;
+  align-self: center;
 }
 
 .navLinks {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   padding: 1rem;
+  margin-top: 1.5rem;
   border-top: 1px solid var(--border);
 }
 
