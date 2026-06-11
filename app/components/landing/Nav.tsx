@@ -26,6 +26,11 @@ export function Nav() {
         </div>
 
         <div className={styles.actions}>
+          {/* Open App — desktop only */}
+          <a href="/app" className={styles.signIn}>
+            Open App
+          </a>
+
           {/* Sign in — desktop only */}
           <a href="/login" className={styles.signIn}>
             Sign in

@@ -19,7 +19,7 @@ import { PricingCard } from '../landing/PricingCard';
 describe('Property 2: PricingCard renders all provided content', () => {
   // Arbitrary for non-empty strings that won't conflict with HTML encoding
   const nonEmptyString = fc
-    .stringMatching(/^[A-Za-z0-9 _\-.,!?/$]+$/, { minLength: 1, maxLength: 50 })
+    .stringMatching(/^[A-Za-z0-9 _\-.,!?/$]{1,50}$/)
     .filter((s) => s.trim().length > 0);
 
   // Arbitrary for optional badge (either undefined or a non-empty string)

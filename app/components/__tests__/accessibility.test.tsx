@@ -185,8 +185,8 @@ describe('ThemeToggle Keyboard Operability and ARIA Attributes (Req 12.6)', () =
     // Verify the component source assigns aria-pressed based on isActive comparison
     const componentPath = path.resolve(__dirname, '../landing/ThemeToggle.tsx');
     const source = fs.readFileSync(componentPath, 'utf-8');
-    // isActive is determined by comparing state === currentState
-    expect(source).toMatch(/isActive\s*=.*state\s*===\s*currentState/);
+    // isActive is determined by comparing choice === currentChoice
+    expect(source).toMatch(/isActive\s*=.*choice\s*===\s*currentChoice/);
     expect(source).toContain('aria-pressed');
   });
 
