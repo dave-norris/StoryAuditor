@@ -35,22 +35,27 @@ export const CRAFT_AUDIT_CATEGORIES: AuditCategory[] = [
     ],
   },
   {
-    name: "Reader Engagement & Psychology",
+    name: "Character & Theme",
     items: [
       {
-        name: "Zeigarnik Effect / Open Loop Audit",
+        name: "Want vs. Need Audit",
         description:
-          "Tracks open questions and unresolved tensions that keep readers turning pages, ensuring loops are opened intentionally and closed satisfyingly.",
+          "Examines whether each major character has a clear external want and internal need, and whether the tension between them drives meaningful growth.",
       },
       {
-        name: "Dramatic Irony Audit",
+        name: "Thematic Throughline Audit",
         description:
-          "Identifies moments where the reader knows more than the characters and assesses whether that gap creates tension, humor, or dread as intended.",
+          "Traces the central theme across scenes, subplots, and character arcs to ensure it is reinforced consistently without becoming heavy-handed.",
       },
       {
-        name: "Stakes Escalation Audit",
+        name: "Mirror/Foil Character Audit",
         description:
-          "Charts how stakes rise across the narrative arc, flagging plateaus or reversals that may cause reader disengagement.",
+          "Identifies character pairings that reflect or contrast each other and assesses whether those relationships illuminate theme and deepen characterization.",
+      },
+      {
+        name: "Point-of-View Discipline Audit",
+        description:
+          "Checks for unintentional POV shifts, head-hopping, or information leaks that break the chosen narrative perspective.",
       },
     ],
   },
@@ -80,27 +85,22 @@ export const CRAFT_AUDIT_CATEGORIES: AuditCategory[] = [
     ],
   },
   {
-    name: "Character & Theme",
+    name: "Reader Engagement & Psychology",
     items: [
       {
-        name: "Want vs. Need Audit",
+        name: "Zeigarnik Effect / Open Loop Audit",
         description:
-          "Examines whether each major character has a clear external want and internal need, and whether the tension between them drives meaningful growth.",
+          "Tracks open questions and unresolved tensions that keep readers turning pages, ensuring loops are opened intentionally and closed satisfyingly.",
       },
       {
-        name: "Thematic Throughline Audit",
+        name: "Dramatic Irony Audit",
         description:
-          "Traces the central theme across scenes, subplots, and character arcs to ensure it is reinforced consistently without becoming heavy-handed.",
+          "Identifies moments where the reader knows more than the characters and assesses whether that gap creates tension, humor, or dread as intended.",
       },
       {
-        name: "Mirror/Foil Character Audit",
+        name: "Stakes Escalation Audit",
         description:
-          "Identifies character pairings that reflect or contrast each other and assesses whether those relationships illuminate theme and deepen characterization.",
-      },
-      {
-        name: "Point-of-View Discipline Audit",
-        description:
-          "Checks for unintentional POV shifts, head-hopping, or information leaks that break the chosen narrative perspective.",
+          "Charts how stakes rise across the narrative arc, flagging plateaus or reversals that may cause reader disengagement.",
       },
     ],
   },

@@ -12,9 +12,9 @@ describe('craftAuditData - category data integrity', () => {
     it('categories are in the correct order', () => {
       const expectedOrder = [
         'Setup & Payoff',
-        'Reader Engagement & Psychology',
-        'Structure & Pacing',
         'Character & Theme',
+        'Structure & Pacing',
+        'Reader Engagement & Psychology',
         'Series-Level Craft Audits',
       ];
       const actualOrder = CRAFT_AUDIT_CATEGORIES.map((c) => c.name);
@@ -27,9 +27,9 @@ describe('craftAuditData - category data integrity', () => {
 
     it.each([
       [0, 'Setup & Payoff', 4],
-      [1, 'Reader Engagement & Psychology', 3],
+      [1, 'Character & Theme', 4],
       [2, 'Structure & Pacing', 4],
-      [3, 'Character & Theme', 4],
+      [3, 'Reader Engagement & Psychology', 3],
       [4, 'Series-Level Craft Audits', 3],
     ])('category %i "%s" has %i items', (index, _name, count) => {
       expect(CRAFT_AUDIT_CATEGORIES[index].items).toHaveLength(count);
@@ -47,12 +47,13 @@ describe('craftAuditData - category data integrity', () => {
       ]);
     });
 
-    it('"Reader Engagement & Psychology" has correct item names', () => {
+    it('"Character & Theme" has correct item names', () => {
       const items = CRAFT_AUDIT_CATEGORIES[1].items.map((i) => i.name);
       expect(items).toEqual([
-        'Zeigarnik Effect / Open Loop Audit',
-        'Dramatic Irony Audit',
-        'Stakes Escalation Audit',
+        'Want vs. Need Audit',
+        'Thematic Throughline Audit',
+        'Mirror/Foil Character Audit',
+        'Point-of-View Discipline Audit',
       ]);
     });
 
@@ -66,13 +67,12 @@ describe('craftAuditData - category data integrity', () => {
       ]);
     });
 
-    it('"Character & Theme" has correct item names', () => {
+    it('"Reader Engagement & Psychology" has correct item names', () => {
       const items = CRAFT_AUDIT_CATEGORIES[3].items.map((i) => i.name);
       expect(items).toEqual([
-        'Want vs. Need Audit',
-        'Thematic Throughline Audit',
-        'Mirror/Foil Character Audit',
-        'Point-of-View Discipline Audit',
+        'Zeigarnik Effect / Open Loop Audit',
+        'Dramatic Irony Audit',
+        'Stakes Escalation Audit',
       ]);
     });
 
