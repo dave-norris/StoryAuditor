@@ -28,6 +28,7 @@ export interface SignUpResponse {
  */
 export interface User {
   id: number;
+  clerk_id: string | null;
   email: string;
   name: string;
   password_hash: string;

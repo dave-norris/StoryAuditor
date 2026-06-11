@@ -19,6 +19,14 @@
   align-self: center;
 }
 
+.userId {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0 0 1rem;
+  align-self: center;
+  font-family: monospace;
+}
+
 .userButton {
   margin-bottom: 2rem;
   align-self: center;

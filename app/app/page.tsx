@@ -1,15 +1,19 @@
 'use client';
 
 import Link from 'next/link';
-import { UserButton } from '@clerk/nextjs';
+import { UserButton, useUser } from '@clerk/nextjs';
 import { CRAFT_AUDIT_CATEGORIES } from '../data/craftAuditData';
 import { CraftAuditGrid } from '../components/app/CraftAuditGrid';
 import styles from './page.module.css';
 
 export default function AppPage() {
+  const { user } = useUser();
+  const greeting = user?.firstName ? `Welcome, ${user.firstName}` : 'StoryAuditor';
+
   return (
     <main className={styles.container}>
-      <h1 className={styles.heading}>StoryAuditor</h1>
+      <h1 className={styles.heading}>{greeting}</h1>
+      {user?.id && <p className={styles.userId}>ID: {user.id}</p>}
       <div className={styles.userButton}>
         <UserButton />
       </div>
