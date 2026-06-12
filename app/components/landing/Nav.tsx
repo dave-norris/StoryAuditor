@@ -31,11 +31,6 @@ export function Nav() {
             Open App
           </a>
 
-          {/* Sign in — desktop only */}
-          <a href="/login" className={styles.signIn}>
-            Sign in
-          </a>
-
           <ThemeToggle />
 
           <a href="/analyze" className={styles.tryFree}>

@@ -42,13 +42,7 @@ export function MobileMenu() {
           >
             Sample report
           </a>
-          <a
-            href="/login"
-            className={styles.link}
-            onClick={() => setIsOpen(false)}
-          >
-            Sign in
-          </a>
+
         </div>
       )}
     </div>
