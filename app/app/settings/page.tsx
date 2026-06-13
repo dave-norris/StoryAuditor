@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, FormEvent } from 'react';
+import { useState, useEffect, useRef, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './page.module.css';
 
@@ -29,11 +29,28 @@ export default function SettingsPage() {
   }, []);
 
   const router = useRouter();
+  const [countdown, setCountdown] = useState<number | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    if (!success) return;
-    const timer = setTimeout(() => router.back(), 5000);
-    return () => clearTimeout(timer);
+    if (!success) {
+      setCountdown(null);
+      return;
+    }
+    setCountdown(5);
+    intervalRef.current = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev === null || prev <= 1) {
+          if (intervalRef.current) clearInterval(intervalRef.current);
+          router.back();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, [success, router]);
 
   function validate(input: string): string | null {
@@ -129,13 +146,28 @@ export default function SettingsPage() {
             </p>
           )}
         </div>
-        <button
-          type="submit"
-          className={styles.submitBtn}
-          disabled={isLoading}
-        >
-          {isLoading ? 'Saving...' : 'Save'}
-        </button>
+        <div className={styles.buttonRow}>
+          <button
+            type="submit"
+            className={styles.submitBtn}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Saving...' : 'Save'}
+          </button>
+          <button
+            type="button"
+            className={styles.cancelBtn}
+            onClick={() => router.back()}
+            disabled={isLoading}
+          >
+            Cancel
+          </button>
+        </div>
+        {countdown !== null && (
+          <p className={styles.countdown}>
+            Returning in {countdown}s…
+          </p>
+        )}
       </form>
     </main>
   );
