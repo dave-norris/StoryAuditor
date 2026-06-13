@@ -35,6 +35,10 @@ export function DashboardView() {
     }
     const res = await fetch(`/api/dashboard/items?${params.toString()}`);
     if (!res.ok) {
+      if (res.status === 401) {
+        // User record may not exist yet (race with ensure-user). Return empty result.
+        return { items: [], nextCursor: null, hasMore: false };
+      }
       throw new Error('Failed to load items');
     }
     return res.json();
