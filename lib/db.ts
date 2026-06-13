@@ -171,6 +171,35 @@ export async function getClient(): Promise<PoolClient> {
 }
 
 /**
+ * Execute a callback within a transaction that sets the RLS user context.
+ * 
+ * Acquires a client, begins a transaction, sets `app.current_user_id` via
+ * SET LOCAL (scoped to the transaction), executes the callback, commits on
+ * success, rolls back on error, and always releases the client.
+ */
+export async function withUserTransaction<T>(
+  internalUserId: number,
+  fn: (client: PoolClient) => Promise<T>
+): Promise<T> {
+  const client = await getClient();
+  try {
+    await client.query('BEGIN');
+    await client.query(
+      `SET LOCAL app.current_user_id = $1`,
+      [internalUserId.toString()]
+    );
+    const result = await fn(client);
+    await client.query('COMMIT');
+    return result;
+  } catch (error) {
+    await client.query('ROLLBACK');
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
+/**
  * Disconnect from database (for cleanup)
  */
 export async function disconnectDatabase(): Promise<void> {
