@@ -27,6 +27,12 @@ export default function SettingsPage() {
     fetchSettings();
   }, []);
 
+  useEffect(() => {
+    if (!success) return;
+    const timer = setTimeout(() => setSuccess(null), 5000);
+    return () => clearTimeout(timer);
+  }, [success]);
+
   function validate(input: string): string | null {
     const num = Number(input);
     if (input.trim() === '' || isNaN(num)) {
