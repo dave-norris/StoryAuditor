@@ -10,7 +10,11 @@ import { ItemCard } from './ItemCard';
 import { ShowMoreButton } from './ShowMoreButton';
 import { ConfirmationModal } from './ConfirmationModal';
 import { EmptyState } from './EmptyState';
+import { AddSeriesDialog } from './AddSeriesDialog';
+import { AddBookDialog } from './AddBookDialog';
+import { AddGroupDialog } from './AddGroupDialog';
 import styles from './DashboardView.module.css';
+import triggerStyles from './AddItemTriggers.module.css';
 
 interface ModalState {
   open: boolean;
@@ -27,6 +31,21 @@ export function DashboardView() {
   const [state, dispatch] = useReducer(dashboardReducer, initialState);
   const [modalState, setModalState] = useState<ModalState | null>(null);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [openDialog, setOpenDialog] = useState<'series' | 'book' | 'group' | null>(null);
+
+  function handleAddItem(type: 'series' | 'book' | 'group') {
+    if (openDialog !== null) return;
+    setOpenDialog(type);
+  }
+
+  function handleDialogSave(_value: string) {
+    if (openDialog === 'group') return;
+    setOpenDialog(null);
+  }
+
+  function handleDialogClose() {
+    setOpenDialog(null);
+  }
 
   const fetchItems = useCallback(async (currentView: string, cursor?: string | null) => {
     const params = new URLSearchParams({ view: currentView });

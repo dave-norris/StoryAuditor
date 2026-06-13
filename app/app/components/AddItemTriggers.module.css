@@ -1,0 +1,27 @@
+.triggers {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.triggerBtn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  background: var(--surface, #fff);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.triggerBtn:hover {
+  background-color: var(--surface-hover, #f9fafb);
+  border-color: var(--brand);
+}
+
+.triggerBtn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
