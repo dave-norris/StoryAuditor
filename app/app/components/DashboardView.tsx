@@ -318,6 +318,32 @@ export function DashboardView() {
     <div className={styles.container}>
       <ViewToggle currentView={view} />
 
+      {view === 'active' && (
+        <div className={triggerStyles.triggers}>
+          <button
+            type="button"
+            className={triggerStyles.triggerBtn}
+            onClick={() => handleAddItem('series')}
+          >
+            Series
+          </button>
+          <button
+            type="button"
+            className={triggerStyles.triggerBtn}
+            onClick={() => handleAddItem('book')}
+          >
+            Book
+          </button>
+          <button
+            type="button"
+            className={triggerStyles.triggerBtn}
+            onClick={() => handleAddItem('group')}
+          >
+            Group
+          </button>
+        </div>
+      )}
+
       {state.error && (
         <div className={styles.error} role="alert">
           <span className={styles.errorMessage}>{state.error}</span>
@@ -370,6 +396,22 @@ export function DashboardView() {
           isLoading={modalState.isLoading}
         />
       )}
+
+      <AddSeriesDialog
+        open={openDialog === 'series'}
+        onSave={handleDialogSave}
+        onClose={handleDialogClose}
+      />
+      <AddBookDialog
+        open={openDialog === 'book'}
+        onSave={handleDialogSave}
+        onClose={handleDialogClose}
+      />
+      <AddGroupDialog
+        open={openDialog === 'group'}
+        onSave={handleDialogSave}
+        onClose={handleDialogClose}
+      />
     </div>
   );
 }

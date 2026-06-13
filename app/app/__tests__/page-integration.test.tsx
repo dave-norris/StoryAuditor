@@ -10,6 +10,7 @@ import React from 'react';
 
 vi.mock('@clerk/nextjs', () => ({
   UserButton: () => React.createElement('div', { 'data-testid': 'clerk-user-button' }),
+  useUser: () => ({ user: { firstName: null, id: 'test-id' }, isLoaded: true }),
 }));
 
 vi.mock('next/link', () => ({
