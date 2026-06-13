@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { UserButton, useUser } from '@clerk/nextjs';
 import { CRAFT_AUDIT_CATEGORIES } from '../data/craftAuditData';
 import { CraftAuditGrid } from '../components/app/CraftAuditGrid';
+import { DashboardView } from './components/DashboardView';
 import styles from './page.module.css';
 
 export default function AppPage() {
@@ -29,9 +30,13 @@ export default function AppPage() {
       <div className={styles.userButton}>
         <UserButton />
       </div>
+      <Suspense fallback={<p>Loading dashboard...</p>}>
+        <DashboardView />
+      </Suspense>
       <CraftAuditGrid categories={CRAFT_AUDIT_CATEGORIES} />
       <nav className={styles.navLinks}>
         <Link href="/">Back to Home</Link>
+        <Link href="/app/settings">Settings</Link>
       </nav>
     </main>
   );
