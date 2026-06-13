@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './page.module.css';
 
 export default function SettingsPage() {
@@ -27,11 +28,13 @@ export default function SettingsPage() {
     fetchSettings();
   }, []);
 
+  const router = useRouter();
+
   useEffect(() => {
     if (!success) return;
-    const timer = setTimeout(() => setSuccess(null), 5000);
+    const timer = setTimeout(() => router.back(), 5000);
     return () => clearTimeout(timer);
-  }, [success]);
+  }, [success, router]);
 
   function validate(input: string): string | null {
     const num = Number(input);
