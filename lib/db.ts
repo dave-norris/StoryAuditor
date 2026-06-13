@@ -185,7 +185,7 @@ export async function withUserTransaction<T>(
   try {
     await client.query('BEGIN');
     await client.query(
-      `SET LOCAL app.current_user_id = $1`,
+      `SELECT set_config('app.current_user_id', $1, true)`,
       [internalUserId.toString()]
     );
     const result = await fn(client);
